@@ -1,0 +1,26 @@
+{
+  "name": "@zougui/github-webhooks",
+  "private": true,
+  "version": "0.0.0",
+  "main": "dist/index.js",
+  "scripts": {
+    "compile": "tsc --project .",
+    "compile:watch": "npm run compile -- --watch",
+    "clean": "rimraf ./dist & rimraf ./node_modules/.tmp/tsconfig.app.tsbuildinfo",
+    "build": "npm run clean && npm run compile"
+  },
+  "devDependencies": {
+    "@types/express": "^5.0.3",
+    "@types/node": "^22.15.30",
+    "typescript": "^5.8.3"
+  },
+  "dependencies": {
+    "dotenv": "^16.5.0",
+    "env-var": "^7.5.0",
+    "express": "^5.1.0",
+    "mongodb": "^6.17.0",
+    "papr": "^15.2.2",
+    "radash": "^12.1.0",
+    "zod": "^3.25.56"
+  }
+}
