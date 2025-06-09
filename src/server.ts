@@ -29,7 +29,7 @@ const requestSchema = z.object({
   }).optional(),
 });
 
-app.post('/github-webhook', express.json({ verify: verifySignature }), async (req, res) => {
+app.post('/', express.json({ verify: verifySignature }), async (req, res) => {
   console.log('Webhook received');
 
   const { data } = requestSchema.safeParse(req.body);
