@@ -9,7 +9,7 @@ import { connect, ProjectModel } from './database';
 import { env } from './env';
 
 const app = express();
-
+console.log('test')
 app.use(express.json());
 
 function verifySignature(req: Request, res: Response, buf: Buffer) {
