@@ -24,6 +24,7 @@ function verifySignature(req: Request, res: Response, buf: Buffer) {
 }
 
 const requestSchema = z.object({
+  ref: z.string().optional(),
   repository: z.object({
     name: z.string().optional(),
   }).optional(),
@@ -34,6 +35,13 @@ app.post('/', express.json({ verify: verifySignature }), async (req, res) => {
 
   const { data } = requestSchema.safeParse(req.body);
   const repoName = data?.repository?.name;
+  const branch = data?.ref?.split('/').pop();
+
+  if (branch && branch !== 'main') {
+    console.log('Ignored webhook for non-main branch');
+    res.status(204).end();
+    return;
+  }
 
   if (!repoName) {
     console.error('Missing repository name');
