@@ -60,6 +60,7 @@ app.post('/', express.json({ verify: verifySignature }), async (req, res) => {
   const cmd = `
     cd ${project.path} && \
     git pull && \
+    pnpm install && \
     ${project.build} && \
     sudo systemctl restart ${project.service}
   `;
